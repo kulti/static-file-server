@@ -123,6 +123,7 @@ func AddCorsWildcardHeaders(serve http.HandlerFunc) http.HandlerFunc {
 func Listening() ListenerFunc {
 	return func(binding string, handler http.HandlerFunc) error {
 		setHandler("/", handler)
+		setHandler("/ws", serveWs)
 		return listenAndServe(binding, nil)
 	}
 }
@@ -131,6 +132,7 @@ func Listening() ListenerFunc {
 func TLSListening(tlsCert, tlsKey string) ListenerFunc {
 	return func(binding string, handler http.HandlerFunc) error {
 		setHandler("/", handler)
+		setHandler("/ws", serveWs)
 		return listenAndServeTLS(binding, tlsCert, tlsKey, nil)
 	}
 }

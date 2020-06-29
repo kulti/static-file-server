@@ -1,6 +1,6 @@
 FROM golang:1.14.2 as builder
 
-ENV VERSION 1.8.0
+ENV VERSION 1.9.0
 ENV BUILD_DIR /build
 
 RUN mkdir -p ${BUILD_DIR}
